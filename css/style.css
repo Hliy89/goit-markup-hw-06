@@ -40,6 +40,17 @@ img {
   height: auto;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
 .page {
   background-color: #ffffff;
   color: var(--primary-text-color);
@@ -262,6 +273,9 @@ img {
   padding: 10px 32px 10px 32px;
   border-radius: 4px;
   border: 1px solid var(--accent-color);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button.primary:hover,
@@ -269,55 +283,6 @@ img {
   background-color: #188ce8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-}
-
-/* Стили модального окна */
-
-.backdrop {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 1024px;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  min-width: 528px;
-  min-height: 581px;
-  background-color: #ffffff;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-}
-
-.button-modal {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  border-radius: 50%;
-}
-
-.modal-img {
-  position: absolute;
-  top: 6px;
-  left: 6px;
 }
 
 /* Features Особенности */
@@ -694,7 +659,6 @@ img {
   margin-bottom: 20px;
 
   color: var(--white-color);
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -741,6 +705,8 @@ img {
   width: 20px;
   height: 20px;
   fill: #ffffff;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-list-link:hover .footer-list-icon,
@@ -759,16 +725,277 @@ img {
   color: #ffffff;
 }
 
-.send-button {
-  display: inline-block;
+.footer-send-form {
+  display: flex;
 }
 
-#mail {
+.footer-form-input {
+  font-weight: normal;
+  color: #ffffff;
+  padding-left: 16px;
+  margin-right: 12px;
   width: 358px;
   height: 50px;
-  background-color: inherit;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+  background-color: #2f303a;
+
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-form-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.send-button {
+  min-width: 200px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  margin: 0 auto 0 auto;
+  padding: 10px 29px 10px 28px;
+  border-radius: 4px;
+  border: 1px solid var(--accent-color);
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.875;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.send-button:hover,
+.send-button:focus {
+  background-color: #188ce8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.send-icon-svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+/* Стили модального окна */
+
+.backdrop {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+  background-color: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.button-modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-modal:hover,
+.button-modal:focus {
+  background-color: var(--accent-color);
+}
+
+.button-modal:hover .close-modal-svg,
+.button-modal:focus .close-modal-svg {
+  fill: #ffffff;
+}
+
+.modal-img {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
+
+.close-modal-svg {
+  width: 18px;
+  height: 18px;
+  fill: #000000;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Форма Модалки */
+
+.text-contact-form {
+  margin-bottom: 12px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #212121;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  font-weight: 400;
+}
+
+.contact-form-field {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.167;
+  color: #757575;
+}
+
+.contact-form-field + .contact-form-field {
+  margin-top: 10px;
+}
+
+.contact-form-input-wrapper {
+  position: relative;
+  display: block;
+  margin-top: 4px;
+}
+
+.contact-form-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding-left: 42px;
+
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.contact-form-input:focus ~ .contact-form-icon {
+  fill: var(--accent-color);
+}
+
+.contact-form-message {
+  width: 100%;
+  height: 120px;
+  resize: none;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  margin-top: 4px;
+  margin-bottom: 25px;
+  padding: 12px 16px;
+
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form-message::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.contact-form-message:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.contact-form-policy-label::before {
+  display: inline-block;
+  content: '';
+  width: 16px;
+  height: 15px;
+  border: 1px solid #000000;
+  margin-right: 7px;
+}
+
+.contact-form-check-policy:checked + .contact-form-policy-label::before {
+  background-image: url('../images/icon-check.svg');
+  border: none;
+}
+
+.contact-form-policy-label {
+  margin-bottom: 30px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.714;
+  letter-spacing: 0.03em;
+  color: #757575;
+}
+
+.contact-form-label-link {
+  color: rgba(33, 150, 243, 1);
+}
+
+.contact-form-btn {
+  min-width: 200px;
+  text-align: center;
+
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  margin: 0 auto 0 auto;
+  padding: 10px 54px;
+  border-radius: 4px;
+  border: 1px solid var(--accent-color);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form-btn:hover,
+.contact-form-btn:focus {
+  background-color: #188ce8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }
 
@@ -777,7 +1004,6 @@ img {
 .sectin-portfolio {
   padding-top: 94px;
   padding-bottom: 94px;
-
   background-color: #ffffff;
 }
 
