@@ -392,7 +392,11 @@
           </ul>
         </div>
         <div>
-          <p>Подпишитесь на рассылку</p>
+          <p class="send-text">Подпишитесь на рассылку</p>
+          <form>
+            <input type="email" name="mail" placeholder="E-mail" />
+            <button class="send-button" type="submit">Подписаться</button>
+          </form>
         </div>
       </div>
     </footer>
@@ -404,6 +408,27 @@
         <button class="button-modal" data-modal-close>
           <img src="./images/modal-cloze/madal-close.svg" alt="" />
         </button>
+        <div role="group">
+          <form>
+            <legend>Оставьте свои данные, мы вам перезвоним</legend>
+            <br />
+            <label for="name">Имя</label>
+            <input type="text" name="name" id="name" />
+            <br />
+            <label for="tel">Телефон</label>
+            <input type="tel" name="tel" id="tel" />
+            <br />
+            <label for="mail">Почта</label>
+            <input type="email" name="mail" id="mail" />
+            <br />
+            <textarea name="comment" id="comment" rows="10"></textarea>
+            <br />
+            <input type="checkbox" name="" id="" />
+            <label for="">Соглашаюсь с рассылкой и принимаю Условия договора</label>
+            <br />
+            <button type="submit">Отправить</button>
+          </form>
+        </div>
       </div>
     </div>
 

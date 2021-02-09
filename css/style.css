@@ -748,6 +748,30 @@ img {
   color: #ffffff;
 }
 
+.send-text {
+  margin-bottom: 20px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.143;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.send-button {
+  display: inline-block;
+}
+
+#mail {
+  width: 358px;
+  height: 50px;
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
 /* Стили Portfolio.html */
 
 .sectin-portfolio {
