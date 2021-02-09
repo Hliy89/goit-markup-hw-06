@@ -752,6 +752,7 @@ img {
 
 .send-button {
   min-width: 200px;
+  height: 50px;
   align-items: center;
   text-align: center;
   display: flex;
