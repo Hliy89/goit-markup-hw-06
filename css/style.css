@@ -964,6 +964,12 @@ img {
   border: none;
 }
 
+.contact-form-check-policy:focus + .contact-form-policy-label::before {
+  background-image: url('../images/icon-check.svg');
+  border: none;
+  outline: 1px solid var(--accent-color);
+}
+
 .contact-form-policy-label {
   margin-bottom: 30px;
   font-style: normal;
